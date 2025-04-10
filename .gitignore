@@ -1,0 +1,113 @@
+# ========== GLOBAL ==========
+# OS / Editor / IDE
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+
+# JetBrains IDEs
+.idea/
+
+# VS Code
+.vscode/
+
+# ========== ANDROID (Java) ==========
+*.iml
+.gradle/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+*.apk
+*.ap_
+
+# Android Studio specific
+/.gradle
+/local.properties
+/.idea
+.DS_Store
+*.hprof
+*.log
+*.class
+*.jar
+*.dex
+*.apk
+*.ap_
+*.keystore
+output.json
+gen/
+bin/
+
+# ========== FLASK + CREW AI ==========
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+*.eggs/
+*.db
+*.sqlite3
+.env
+.env.*
+*.env.*
+instance/
+*.log
+
+# pip environment
+venv/
+env/
+ENV/
+.venv/
+.pytest_cache/
+.tox/
+coverage/
+htmlcov/
+dist/
+build/
+
+# ========== NEXT.JS + TAILWIND + TYPESCRIPT ==========
+# Node.js
+node_modules/
+.next/
+out/
+dist/
+build/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Tailwind JIT cache
+.tailwind-cache/
+
+# ========== MISC ==========
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.jks
+*.orig
+*.rej
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+*.ipynb_checkpoints
+
+# Logs
+logs/
+*.log
+
+# System Files
+ehthumbs.db
+Icon?
+desktop.ini
