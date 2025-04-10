@@ -41,13 +41,14 @@ This data is analyzed to generate **summary reports**, **behavioral insights**, 
 **Tech Stack**: Java, Android Studio
 
 **📸 Screenshots**:
-- ![Mobile App Home](./screenshots/mobile3.jpg)
-- ![generated data 1](./screenshots/mobile1.jpg)
-- ![generated data 2](./screenshots/mobile2.jpg)
+- <img src="./screenshots/mobile3.jpg" width="300" />
+- <img src="./screenshots/mobile1.jpg" width="300" />
+- <img src="./screenshots/mobile2.jpg" width="300" />
+
 
 
 **🎥 Demo Video**:  
-[Watch demo](./demo/mobile-demo.mkv)
+[Watch demo](https://drive.google.com/drive/folders/1aZXAgttMsAgc6UzvcPxo9CdnlS8GNYOH?usp=sharing)
 
 
 
