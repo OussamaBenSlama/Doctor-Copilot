@@ -1,0 +1,128 @@
+[
+    {
+        "date": "2023-10-01",
+        "screen_time": {
+            "Instagram": 240,
+            "Reddit": 180,
+            "TikTok": 120
+        },
+        "notifications": [
+            "Why am I like this?",
+            "3am thoughts",
+            "Can't breathe"
+        ],
+        "browsing": [
+            "reddit.com/r/anxiety",
+            "healthline.com/panic-attacks",
+            "twitter.com/search?q=lonely"
+        ]
+    },
+    {
+        "date": "2023-10-02",
+        "screen_time": {
+            "Spotify": 420,
+            "Chrome": 180,
+            "Messages": 90
+        },
+        "notifications": [
+            "Missed call: Mom",
+            "You okay?",
+            "Sad songs playlist updated"
+        ],
+        "browsing": [
+            "lyrics.com/alone-again",
+            "webmd.com/depression-symptoms",
+            "forum.psychcentral.com"
+        ]
+    },
+    {
+        "date": "2023-10-03",
+        "screen_time": {
+            "YouTube": 300,
+            "Twitter": 210,
+            "Duolingo": 5
+        },
+        "notifications": [
+            "4:30am: Can't sleep",
+            "Memory from happier times",
+            "Low battery"
+        ],
+        "browsing": [
+            "youtube.com/watch?v=depression-help",
+            "twitter.com/search?q=suicide",
+            "crisishelpline.org"
+        ]
+    },
+    {
+        "date": "2023-10-04",
+        "screen_time": {
+            "Headspace": 5,
+            "Chrome": 480,
+            "Instagram": 120
+        },
+        "notifications": [
+            "No new notifications",
+            "No new notifications",
+            "Battery fully charged"
+        ],
+        "browsing": [
+            "reddit.com/r/SuicideWatch",
+            "quora.com/feeling-hopeless",
+            "amazon.com/sleeping-pills"
+        ]
+    },
+    {
+        "date": "2023-10-05",
+        "screen_time": {
+            "WhatsApp": 600,
+            "Facebook": 180,
+            "Maps": 45
+        },
+        "notifications": [
+            "Where are you?",
+            "Please answer",
+            "Last seen 12h ago"
+        ],
+        "browsing": [
+            "howtofakehappiness.com",
+            "therapycosts.com",
+            "reddit.com/r/depression_memes"
+        ]
+    },
+    {
+        "date": "2023-10-06",
+        "screen_time": {
+            "Spotify": 720,
+            "Chrome": 60,
+            "Camera": 15
+        },
+        "notifications": [
+            "Emergency SOS activated",
+            "Crisis text line response",
+            "Your daily screen time is up 300%"
+        ],
+        "browsing": [
+            "samaritans.org",
+            "twloha.com",
+            "youtube.com/watch?v=help-me"
+        ]
+    },
+    {
+        "date": "2023-10-07",
+        "screen_time": {
+            "SleepCycle": 30,
+            "Chrome": 180,
+            "Messages": 0
+        },
+        "notifications": [
+            "Missed therapy appointment",
+            "Prescription ready",
+            "Your phone needs attention"
+        ],
+        "browsing": [
+            "reddit.com/r/mentalhealth",
+            "ssri-effects.com",
+            "howtoaskforhelp.org"
+        ]
+    }
+]
