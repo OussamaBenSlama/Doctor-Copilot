@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 import json
 import re
-from Ai_mental_health_assistant.backend.model import generate_charts_data, generate_summary, generate_full_report
+from model import generate_charts_data, generate_summary, generate_full_report
 
 app = Flask(__name__)
 

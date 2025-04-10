@@ -36,14 +36,18 @@ This data is analyzed to generate **summary reports**, **behavioral insights**, 
 - Tracks visited websites and classifies them
 - Extracts notification keywords related to mental health
 
+**Example of data collected** : ![user1](./backend/user1.json)
+
 **Tech Stack**: Java, Android Studio
 
 **📸 Screenshots**:
-- ![Mobile App Home](docs/screenshots/mobile_home.png)
-- ![Permissions Screen](docs/screenshots/permissions_screen.png)
+- ![Mobile App Home](./screenshots/mobile3.jpg)
+- ![generated data 1](./screenshots/mobile1.jpg)
+- ![generated data 2](./screenshots/mobile2.jpg)
+
 
 **🎥 Demo Video**:  
-[Watch demo](#link-to-demo-video)
+[Watch demo](./demo/mobile-demo.mkv)
 
 
 
