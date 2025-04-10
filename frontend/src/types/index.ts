@@ -1,4 +1,3 @@
-
 export interface Patient {
   id: string;
   name: string;
@@ -8,7 +7,11 @@ export interface Patient {
   condition: string;
   lastVisit: string;
   nextAppointment: string | null;
-  risk: 'low' | 'medium' | 'high';
+  risk: "low" | "medium" | "high";
+}
+
+export interface ReportData {
+  data: string;
 }
 
 export interface DailyUsageData {

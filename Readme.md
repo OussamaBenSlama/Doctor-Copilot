@@ -84,11 +84,11 @@ This data is analyzed to generate **summary reports**, **behavioral insights**, 
 - TypeScript
 
 **📸 Screenshots**:
-- ![Dashboard Home](docs/screenshots/dashboard_home.png)
-- ![Patient Report](docs/screenshots/patient_report.png)
+- <img src="./screenshots/web1.png" width="500" />
+- <img src="./screenshots/web2.png" width="500" />
 
 **🎥 Demo Video**:  
-[Watch demo](#link-to-demo-video)
+[Watch demo](https://drive.google.com/drive/folders/1aZXAgttMsAgc6UzvcPxo9CdnlS8GNYOH?usp=sharing)
 
 ## 🔁 Workflow
 
@@ -115,7 +115,7 @@ DoctorCopilot/
 │
 ├— mobile-app/         # Android application
 ├— backend/            # Flask + CrewAI processing
-├— dashboard/          # Next.js doctor interface
+├— frontend/          # Next.js doctor interface
 └— README.md
 ```
 
