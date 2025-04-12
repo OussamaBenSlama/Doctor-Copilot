@@ -41,7 +41,7 @@ const Sidebar = () => {
           <div className="p-6 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-2">
               <Brain className="h-6 w-6 text-mindbridge-blue" />
-              <span className="text-xl font-bold text-mindbridge-blue">MindBridge</span>
+              <span className="text-xl font-bold text-mindbridge-blue">Doctor-Copilot</span>
             </div>
             {isMobile && (
               <Button
@@ -141,7 +141,7 @@ const Sidebar = () => {
               onClick={closeSidebar}
             >
               <User className="mr-2 h-4 w-4" />
-              Dr. Sarah Wilson
+              Dr. Tbibe
             </Button>
           </div>
         </div>

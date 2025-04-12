@@ -15,6 +15,8 @@ import { FileBarChart, Loader2 } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchDashboardData, fetchFullReport, fetchReport } from "@/lib/api";
 import { DashboardData } from "@/types/diagrams";
+import { marked } from 'marked';
+import Loader from "@/components/layout/Loader";
 
 const PatientProfile = () => {
   const { id } = useParams<{ id: string }>();
@@ -35,50 +37,6 @@ const PatientProfile = () => {
     fetchDashboardData().then((data) => setData(data));
   }, []);
 
-  // const realData = {
-  //   app_usage_data: data.app_usage_data,
-  //   website_visits: data.website_visits,
-  //   website_categories: data.website_categories,
-  //   usage_by_timeframe: data.usage_by_timeframe
-  // }
-  // Sample data for the new visualizations
-  const sampleData = {
-    app_usage_data: [
-      { name: "Social Media", value: 124, category: "Entertainment" },
-      { name: "Games", value: 85, category: "Entertainment" },
-      { name: "Health & Fitness", value: 42, category: "Health" },
-      { name: "Productivity", value: 38, category: "Work" },
-      { name: "News", value: 22, category: "Information" },
-    ],
-    website_visits: [
-      { name: "facebook.com", value: 35 },
-      { name: "youtube.com", value: 28 },
-      { name: "twitter.com", value: 24 },
-      { name: "instagram.com", value: 22 },
-      { name: "reddit.com", value: 18 },
-      { name: "linkedin.com", value: 12 },
-      { name: "pinterest.com", value: 8 },
-      { name: "amazon.com", value: 7 },
-    ],
-    website_categories: [
-      { name: "Social Media", value: 105 },
-      { name: "Entertainment", value: 65 },
-      { name: "News", value: 38 },
-      { name: "Shopping", value: 22 },
-      { name: "Education", value: 18 },
-    ],
-    usage_by_timeframe: [
-      { timeframe: "Morning", value: 85 },
-      { timeframe: "Afternoon", value: 125 },
-      { timeframe: "Evening", value: 165 },
-      { timeframe: "Night", value: 75 },
-    ],
-    metadata: {
-      total_apps: 18,
-      top_category: "Social Media",
-      total_screen_time: 450,
-    },
-  };
 
   if (!patient) {
     setTimeout(() => {
@@ -109,17 +67,16 @@ const PatientProfile = () => {
     setReportContent(null);
 
     fetchFullReport()
-      .then((data) => {
+      .then(async (data) => {
         setIsGeneratingFull(false);
-        setIsLoadingReport(false);
-
-        setReportContent(data);
-
-        toast({
-          title: "Report Generated Successfully",
-          description: `Digital behavior report for ${patient.name} is ready to view.`,
-          variant: "default",
-        });
+  setIsLoadingReport(false);
+  const htmlContent = await marked(data);
+  setReportContent(htmlContent); // set directly
+  toast({
+    title: "Report Generated Successfully",
+    description: `Digital behavior report for ${patient.name} is ready to view.`,
+    variant: "default",
+  });
       })
       .catch((error) => {
         setReportContent(
@@ -134,26 +91,25 @@ const PatientProfile = () => {
   };
 
   const handleGeneratePartialReport = () => {
-    setIsGeneratingPartial(true);
+    setIsGeneratingFull(true);
     setIsLoadingReport(true);
     setReportContent(null);
 
     fetchReport()
-      .then((data) => {
-        setIsGeneratingPartial(false);
-        setIsLoadingReport(false);
-
-        setReportContent(data);
-
-        toast({
-          title: "Partial Report Generated",
-          description: `Partial digital behavior report for ${patient.name} is ready to view.`,
-          variant: "default",
-        });
+      .then(async (data) => {
+        setIsGeneratingFull(false);
+  setIsLoadingReport(false);
+  const htmlContent = await marked(data);
+  setReportContent(htmlContent); // set directly
+  toast({
+    title: "Report Generated Successfully",
+    description: `Digital behavior report for ${patient.name} is ready to view.`,
+    variant: "default",
+  });
       })
       .catch((error) => {
         setReportContent(
-          "Partial analysis shows concerning patterns in late night digital activity. Patient exhibits 73% higher engagement with social media platforms compared to peer group. Consider discussing potential impacts on sleep quality and emotional well-being during next session."
+          "Patient digital behavior analysis indicates increased usage of social media applications during evening hours. Recommendation: Implement screen time limits between 8pm-11pm to improve sleep hygiene and reduce digital dependency patterns. Monitor changes in usage patterns over the next 14 days."
         );
         toast({
           title: "Error",
@@ -184,7 +140,7 @@ const PatientProfile = () => {
               ) : (
                 <>
                   <FileBarChart className="mr-2 h-4 w-4" />
-                  Generate Digital Behavior Report
+                  Generate Report
                 </>
               )}
             </Button>
@@ -206,7 +162,7 @@ const PatientProfile = () => {
               ) : (
                 <>
                   <FileBarChart className="mr-2 h-4 w-4" />
-                  Generate Partial Digital Behavior Report
+                  Key Insights
                 </>
               )}
             </Button>
@@ -228,9 +184,9 @@ const PatientProfile = () => {
               </div>
             ) : (
               <div className="p-4 border rounded-md bg-gray-50 dark:bg-gray-800">
-                <p className="text-gray-700 dark:text-gray-300">
-                  {reportContent}
-                </p>
+                <div className="text-gray-700 dark:text-gray-300" id="content">
+                <div dangerouslySetInnerHTML={{ __html: reportContent || "" }} />
+                </div>
               </div>
             )}
           </CardContent>
@@ -244,23 +200,43 @@ const PatientProfile = () => {
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          <AppUsageCategories
-            data={realData?.app_usage_data || sampleData.app_usage_data}
+          {realData?.app_usage_data ? (
+            <AppUsageCategories
+            data={realData?.app_usage_data}
           />
-          <TimeOfDayUsage
-            data={realData?.usage_by_timeframe || sampleData.usage_by_timeframe}
+          ) : (
+            <Loader/>
+          )}
+          {realData?.usage_by_timeframe ? (
+            <TimeOfDayUsage
+            data={realData?.usage_by_timeframe}
           />
+          ) : (
+            <Loader/>
+          )}
+          
+          
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <WebsiteUsage
-            data={realData?.website_visits || sampleData.website_visits}
+        {realData?.website_visits ? (
+            <WebsiteUsage
+            data={realData?.website_visits}
             title="Top Website Visits"
           />
-          <AppUsageCategories
-            data={realData?.website_categories || sampleData.website_categories}
+          ) : (
+            <Loader/>
+          )}
+          {realData?.website_categories ? (
+            <AppUsageCategories
+            data={realData?.website_categories}
             title="Website Categories"
           />
+          ) : (
+            <Loader/>
+          )}
+          
+          
         </div>
       </div>
     </DashboardLayout>
