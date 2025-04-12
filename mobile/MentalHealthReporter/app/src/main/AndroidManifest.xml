@@ -19,6 +19,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MentalHealthReporter"
         tools:targetApi="31">
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <service
             android:name=".MyNotificationListenerService"
             android:enabled="true"
@@ -29,7 +39,6 @@
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
         </service>
-
         <!--
         <service
             android:name=".TrafficVpnService"

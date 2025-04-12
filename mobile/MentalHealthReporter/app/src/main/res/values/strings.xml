@@ -2,4 +2,8 @@
     <string name="app_name">MentalHealthReporter</string>
     <string name="start_btn">Start</string>
     <string name="stop_btn">Stop</string>
+    <string name="typeDocToken">Type your Doctor\'s Token</string>
+    <string name="setupTokenBtn">Setup Token</string>
+    <string name="homeText1">Your AI Reporter, to enhance your mental health and assist your Doctor</string>
+    <string name="disclaimerText">Note that by using our App you agree to share all the informations that your doctor may need for your own benefit!</string>
 </resources>
