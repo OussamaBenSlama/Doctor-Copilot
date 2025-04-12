@@ -264,6 +264,68 @@ app_usage_chart_task = Task(
     context_from=[data_loading_task] 
 )
 
+
+reader = Agent(
+    role="Report Analyst",
+    goal="Extract key information from the report",
+    backstory="Expert in reading and identifying crucial insights from long texts with a background in data analysis and executive reporting.",
+    instructions=[
+        "Identify the most important points from the report based on relevance and impact",
+        "Extract quantitative data and key statistics when present",
+        "Summarize the key findings in a concise manner",
+        "Highlight any actionable insights or recommendations",
+        "Identify potential risks or challenges mentioned in the report",
+        "Maintain the context and meaning of the original text",
+        "Avoid unnecessary jargon or complex language",
+        "Prioritize information based on its strategic importance"
+    ],
+    verbose=True,
+    llm=my_llm
+)
+
+
+reading_report_task = Task(
+    description="Analyze the report and extract the most important points, categorizing them by type (findings, recommendations, risks).",
+    expected_output="A structured, categorized bullet-point list of key insights in markdown syntax.",
+    agent=reader,
+    validation_criteria=[
+        "Contains at least 5 key points",
+        "Maintains factual accuracy of the original report"
+    ],
+    )
+
+# Summarizer Agent - Enhanced version
+summarizer = Agent(
+    role="Executive Summary Specialist",
+    goal="Generate a concise, impactful summary preserving the most important points",
+    backstory="Experienced in crafting minimal but impactful summaries for C-level executives with expertise in business communication.",
+    instructions=[
+        "Create a summary that captures the essence of the report",
+        "Structure the summary with a clear introduction, key findings, and conclusion",
+        "Focus on the most critical insights and action-oriented recommendations",
+        "Highlight implications and business impact where applicable",
+        "Use clear and straightforward language without jargon",
+        "Limit the summary to 200 words maximum",
+        "Ensure the summary is easy to read and understand",
+        "Maintain a neutral, professional tone"
+    ],
+    verbose=True,
+    llm=my_llm,
+)
+
+# Summarizing Task - Enhanced version
+summarizing_task = Task(
+    description="Based on the key points identified by the reader agent, generate a concise, structured executive summary (maximum 200 words).",
+    expected_output="A summary paragraph with 3-5 essential bullet points using markdown syntax, formatted for executive review.",
+    agent=summarizer,
+    # Adding validation criteria
+    validation_criteria=[
+        "Under 200 words total",
+        "Captures the most critical points from the reader's analysis",
+        "Actionable and clear for decision-makers",
+        "Follows executive summary best practices"
+    ]
+)
 # %%
 import json
 import os
@@ -283,7 +345,15 @@ def generate_summary(json_data):
         task=clinical_guidance_task,
         context={"processed_data": behavior_result}
         )
-    return clinical_insight_result
+    reading_report_result = reader.execute_task(
+        task=reading_report_task,
+        context={"processed_data": clinical_insight_result}
+    )
+    # summary_result = summarizer.execute_task(
+    #     task=summarizing_task,
+    #     context={"processed_data": reading_report_result}
+    # )
+    return reading_report_result
 
 def generate_full_report(json_data):
     
@@ -295,6 +365,7 @@ def generate_full_report(json_data):
         task=behavior_analyzing_task,
         context={"processed_data": analysis_result}
         )
+    
     return behavior_result
 
 
