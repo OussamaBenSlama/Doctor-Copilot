@@ -17,6 +17,8 @@ import { fetchDashboardData, fetchFullReport, fetchReport } from "@/lib/api";
 import { DashboardData } from "@/types/diagrams";
 import { marked } from 'marked';
 import Loader from "@/components/layout/Loader";
+import CustomChatComponent from "@/components/patient/MyChatBot";
+import { log } from "console";
 
 const PatientProfile = () => {
   const { id } = useParams<{ id: string }>();
@@ -99,6 +101,7 @@ const PatientProfile = () => {
       .then(async (data) => {
         setIsGeneratingFull(false);
   setIsLoadingReport(false);
+
   const htmlContent = await marked(data);
   setReportContent(htmlContent); // set directly
   toast({
@@ -109,11 +112,12 @@ const PatientProfile = () => {
       })
       .catch((error) => {
         setReportContent(
-          "Patient digital behavior analysis indicates increased usage of social media applications during evening hours. Recommendation: Implement screen time limits between 8pm-11pm to improve sleep hygiene and reduce digital dependency patterns. Monitor changes in usage patterns over the next 14 days."
+          error
+          //"Patient digital behavior analysis indicates increased usage of social media applications during evening hours. Recommendation: Implement screen time limits between 8pm-11pm to improve sleep hygiene and reduce digital dependency patterns. Monitor changes in usage patterns over the next 14 days."
         );
         toast({
           title: "Error",
-          description: "Failed to generate report.",
+          description: "Failed to generate partial report.",
           variant: "destructive",
         });
       });
@@ -121,7 +125,8 @@ const PatientProfile = () => {
 
   return (
     <DashboardLayout>
-      <PatientHeader patient={patient} />
+        <CustomChatComponent />
+       <PatientHeader patient={patient} />
 
       {/* Report Generation Buttons */}
       <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
