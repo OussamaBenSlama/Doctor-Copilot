@@ -42,7 +42,6 @@ This data is analyzed to generate **summary reports**, **behavioral insights**, 
 **Tech Stack**: Java, Android Studio
 
 **📸 Screenshots**:
-- <img src="./screenshots/mobile3.jpg" width="300" />
 - <img src="./screenshots/mobile1.jpg" width="300" />
 - <img src="./screenshots/mobile2.jpg" width="300" />
 
