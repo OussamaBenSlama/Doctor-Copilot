@@ -16,7 +16,8 @@ This data is analyzed to generate **summary reports**, **behavioral insights**, 
 
 ## Features
 
-- ✅ One-time setup by the patient with permission approvals  
+- ✅ One-time setup by the patient with permission approvals
+- ✅ A chatbot to help doctors gain deeper insights into patient reports for better diagnosis and treatment.
 - ✅ Continuous passive data collection from the phone  
 - ✅ Categorization of websites and apps used  
 - ✅ Extraction of mental-health-related keywords from notifications  
